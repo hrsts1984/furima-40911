@@ -40,6 +40,9 @@ Things you may want to cover:
 | birth_day               | text      | null: false  |
 
 
+##  Association
+_ has_many :items
+
 
 ##items テーブル
 
@@ -56,6 +59,9 @@ Things you may want to cover:
 | price                   | string    | null: false  |
 | user_id                 | string    | null: false, foreign_key: true |
 
+##  Association
+_ belongs_to :user
+
 
 ##shipping_address テーブル
 
@@ -68,10 +74,6 @@ Things you may want to cover:
 | phone_number            | string    | null: false  |
 | user_id                 | string    | null: false, foreign_key: true |
 
-
-##cards テーブル
-
-| Column                  |  Type     |  Options     |
-| ------------------------| --------- | ------------ |
-| card-id                 | string    | null: false  |
-| user_id                 | string    | null: false  |
+##  Association
+_ belongs_to :user
+_ belongs_to :item
