@@ -30,14 +30,13 @@ Things you may want to cover:
 | Column                  |  Type     |  Options     |
 | ------------------------| --------- | ------------ |
 | nickname                | string    | null: false  |
-| email                   | string    | null: false  |
-| password                | string    | null: false  |
+| email                   | string    | null: false,unique:true |
 | encrypted_password      | string    | null: false  |
 | family_name             | string    | null: false  |
 | first_name              | string    | null: false  |
 | family_name_kana        | string    | null: false  |
 | first_name_kana         | string    | null: false  |
-| birth_day               | text      | null: false  |
+| birth_day               | date      | null: false  |
 
 
 ##  Association
@@ -48,19 +47,19 @@ _ has_many :items
 
 | Column                  |  Type     |  Options     |
 | ------------------------| --------- | ------------ |
-| image                   | text      | null: false  |
 | product_name            | string    | null: false  |
-| description             | string    | null: false  |
-| category                | string    | null: false  |
-| product_condition       | string    | null: false  |
-| shipping_cost           | string    | null: false  |
-| shipping_area           | string    | null: false  |
-| shipping_time           | string    | null: false  |
-| price                   | string    | null: false  |
-| user_id                 | string    | null: false, foreign_key: true |
+| description             | text      | null: false  |
+| category_id             | integer   | null: false  |
+| product_condition_id    | integer   | null: false  |
+| shipping_cost_id        | integer   | null: false  |
+| shipping_area_id        | integer   | null: false  |
+| shipping_time_id        | integer   | null: false  |
+| price                   | integer   | null: false  |
+| user                    | references| null: false, foreign_key: true |
 
 ##  Association
 _ belongs_to :user
+_ belongs_to :shipping_address
 
 
 ##shipping_address テーブル
@@ -71,9 +70,22 @@ _ belongs_to :user
 | prefecture              | string    | null: false  |
 | city                    | string    | null: false  |
 | address                 | string    | null: false  |
+| building_number         | string    |
 | phone_number            | string    | null: false  |
-| user_id                 | string    | null: false, foreign_key: true |
+| user                    | references| null: false, foreign_key: true |
 
 ##  Association
+_ belongs_to :user
+_ belongs_to :item
+
+
+## orders　テーブル
+
+| Column                  |  Type     |  Options     |
+| ------------------------| --------- | ------------ |
+| item                    | string    | null: false  |
+| user                    | references| null: false, foreign_key: true |
+
+## Association
 _ belongs_to :user
 _ belongs_to :item
