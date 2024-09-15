@@ -25,7 +25,7 @@ Things you may want to cover:
 
 # テーブル設計
 
-##users テーブル
+## users テーブル
 
 | Column                  |  Type     |  Options     |
 | ------------------------| --------- | ------------ |
@@ -40,10 +40,12 @@ Things you may want to cover:
 
 
 ##  Association
-_ has_many :items
+has_many :items
+has_many :shipping_address
+has_many :orders
 
 
-##items テーブル
+## items テーブル
 
 | Column                  |  Type     |  Options     |
 | ------------------------| --------- | ------------ |
@@ -58,8 +60,8 @@ _ has_many :items
 | user                    | references| null: false, foreign_key: true |
 
 ##  Association
-_ belongs_to :user
-_ belongs_to :shipping_address
+belongs_to :user
+belongs_to :shipping_address
 
 
 ##shipping_address テーブル
@@ -75,17 +77,17 @@ _ belongs_to :shipping_address
 | user                    | references| null: false, foreign_key: true |
 
 ##  Association
-_ belongs_to :user
-_ belongs_to :item
+belongs_to :user
+belongs_to :item
 
 
 ## orders　テーブル
 
 | Column                  |  Type     |  Options     |
 | ------------------------| --------- | ------------ |
-| item                    | string    | null: false  |
+| item                    | references| null: false, foreign_key: true |
 | user                    | references| null: false, foreign_key: true |
 
 ## Association
-_ belongs_to :user
-_ belongs_to :item
+belongs_to :user
+belongs_to :item
