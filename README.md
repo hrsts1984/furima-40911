@@ -41,7 +41,6 @@ Things you may want to cover:
 
 ##  Association
 has_many :items
-has_many :shipping_address
 has_many :orders
 
 
@@ -61,7 +60,7 @@ has_many :orders
 
 ##  Association
 belongs_to :user
-belongs_to :shipping_address
+has_one :order
 
 
 ##shipping_address テーブル
@@ -91,3 +90,4 @@ belongs_to :item
 ## Association
 belongs_to :user
 belongs_to :item
+has_one :address
