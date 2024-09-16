@@ -73,11 +73,12 @@ has_one :order
 | address                 | string    | null: false  |
 | building_number         | string    |
 | phone_number            | string    | null: false  |
-| user                    | references| null: false, foreign_key: true |
+
 
 ##  Association
 belongs_to :user
 belongs_to :item
+belongs_to :order
 
 
 ## orders　テーブル
