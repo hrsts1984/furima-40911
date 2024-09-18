@@ -63,7 +63,7 @@ belongs_to :user
 has_one :order
 
 
-##shipping_address テーブル
+##shipping_addresses テーブル
 
 | Column                  |  Type     |  Options     |
 | ------------------------| --------- | ------------ |
