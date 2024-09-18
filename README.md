@@ -68,7 +68,7 @@ has_one :order
 | Column                  |  Type     |  Options     |
 | ------------------------| --------- | ------------ |
 | post_cord               | string    | null: false  |
-| prefecture_id              | integer   | null: false  |
+| shipping_area_id        | integer   | null: false  |
 | city                    | string    | null: false  |
 | address                 | string    | null: false  |
 | building_number         | string    |
@@ -90,4 +90,4 @@ belongs_to :order
 ## Association
 belongs_to :user
 belongs_to :item
-has_many :addresses
+has_one :address
