@@ -9,8 +9,8 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は英字と数字を両方含めて設定してください' }, on: :create
-  validates :family_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: 'はひらがな、カタカナ、漢字のみを使用できます' }
-  validates :first_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: 'はひらがな、カタカナ、漢字のみを使用できます' }
+  validates :family_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'はひらがな、カタカナ、漢字のみを使用できます' }
+  validates :first_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'はひらがな、カタカナ、漢字のみを使用できます' }
   validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'はカタカナのみを使用できます' }
   validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'はカタカナのみを使用できます' }
   validates :birth_day, presence: true
