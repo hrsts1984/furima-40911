@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   before_action :unless_login_user, only: :new
   before_action :find_item, only: %i[show edit update destroy]
+  before_action :authenticate_user!
   def index
-    @items = Item.all.order('created_at DESC')
+    # @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -13,9 +14,9 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
+      redirect_to root_path, notice: 'Item was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +31,7 @@ class ItemsController < ApplicationController
     redirect_to root_path unless user_signed_in?
   end
 
-  def find_item
-    @item = Item.find(params[:id])
-  end
+  # def find_item
+  # @item = Item.find(params[:id])
+  # end
 end
