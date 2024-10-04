@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
                                  :shipping_area_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def find_item
-    @item = Item.find(params[:id])
-  end
+  # def find_item
+  # @item = Item.find(params[:id])
+  # end
 end
