@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
+      redirect_to item_path(@item), notice: 'Item was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,10 +24,6 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:product_name, :description, :category_id, :product_condition_id, :shipping_cost_id, :shipping_time_id,
                                  :shipping_area_id, :price, :image).merge(user_id: current_user.id)
-  end
-
-  def unless_login_user
-    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def find_item
