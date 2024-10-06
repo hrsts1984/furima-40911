@@ -6,12 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: "items#index"
-<<<<<<< Updated upstream
+
   resources :items, only: [:index, :new, :create, :show]
   
   end
-=======
 
-  resources :items
-end
->>>>>>> Stashed changes

@@ -2,15 +2,12 @@ class ItemsController < ApplicationController
   before_action :find_item, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: [:new, :create]
   def index
-<<<<<<< Updated upstream
     @items = Item.all.order('created_at DESC')
-=======
     @items = Item.all
   end
 
   def new
     @item = Item.new
->>>>>>> Stashed changes
   end
 
   def new
