@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :find_item, only: %i[show edit update destroy]
+  before_action :set_item, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -45,13 +44,10 @@ class ItemsController < ApplicationController
                                  :shipping_area_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def find_item
-    @item = Item.find(params[:id])
-  end
-
   def set_item
     @item = Item.find(params[:id])
   end
+
   
   def correct_user
     redirect_to(root_path) unless current_user.id == @item.user_id
