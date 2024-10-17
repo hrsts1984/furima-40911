@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
 
   def index
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @order_form = OrderForm.new
     return unless @item.order.present? || current_user.id == @item.user_id
 
@@ -31,7 +32,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = 'sk_test_924403446d88cb8e4f19d01b' # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       card: order_params[:token], # カードトークン

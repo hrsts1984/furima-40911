@@ -1,8 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :image
-  has_many :orders, dependent: :destroy
   belongs_to :user
-  # has_one :purchase, class_name: 'Purchase'
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category

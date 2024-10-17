@@ -16,11 +16,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.edit(item_params)
-      redirect_to @item, notice: 'Item was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
-    end
   end
 
   def update
