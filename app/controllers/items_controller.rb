@@ -8,11 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    if @item.new(item_params)
-      redirect_to @item, notice: 'Item was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @item = Item.new
   end
 
   def show
