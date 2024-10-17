@@ -8,15 +8,24 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    if @item.new(item_params)
+      redirect_to @item, notice: 'Item was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def show
-  
+    @item = Item.find(params[:id])
+    @order = @item.order
   end
 
   def edit
-
+    if @item.edit(item_params)
+      redirect_to @item, notice: 'Item was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -56,9 +65,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  
   def correct_user
     redirect_to(root_path) unless current_user.id == @item.user_id
   end
-
 end
