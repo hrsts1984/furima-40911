@@ -26,9 +26,5 @@ class OrderForm
         order_id: order_form.id
       )
     end
-
-    true
-  rescue ActiveRecord::RecordInvalid
-    false
   end
 end
