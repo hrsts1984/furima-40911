@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
       @order_form.save
       redirect_to root_path, notice: 'Order was successfully created.'
     else
+      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       puts @order_form.errors.full_messages
       render :index, status: :unprocessable_entity
     end
@@ -26,7 +27,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_form).permit(:postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :price).merge(
+    params.require(:order_form).permit(:postal_code, :prefecture_id, :city, :house_number, :building, :phone_number, :price).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
   end
