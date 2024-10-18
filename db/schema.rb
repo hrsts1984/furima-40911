@@ -64,12 +64,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_12_080334) do
   end
 
   create_table "shipping_addresses", charset: "utf8", force: :cascade do |t|
-    t.string "postal_code"
-    t.integer "prefecture_id"
-    t.string "city"
-    t.string "addresses"
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "house_number", null: false
     t.string "building"
-    t.string "phone_number"
+    t.string "phone_number", null: false
     t.bigint "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
